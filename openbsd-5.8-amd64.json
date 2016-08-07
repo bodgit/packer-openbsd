@@ -43,7 +43,7 @@
         "Allow root ssh login = yes<enter>",
         "What timezone are you in = UTC<enter>",
         "Location of sets = cd<enter>",
-        "Set name(s) = -game*.tgz -x*.tgz<enter>",
+        "Set name(s) = -game*.tgz -xfont*.tgz -xserv*.tgz<enter>",
         "Directory does not contain SHA256.sig. Continue without verification = yes<enter>",
         "EOF<enter>",
         "install -af install.conf && reboot<enter>"
@@ -80,7 +80,7 @@
         "Allow root ssh login = yes<enter>",
         "What timezone are you in = UTC<enter>",
         "Location of sets = cd<enter>",
-        "Set name(s) = -game*.tgz -x*.tgz<enter>",
+        "Set name(s) = -game*.tgz -xfont*.tgz -xserv*.tgz<enter>",
         "Directory does not contain SHA256.sig. Continue without verification = yes<enter>",
         "EOF<enter>",
         "install -af install.conf && reboot<enter>"
@@ -116,7 +116,7 @@
         "Allow root ssh login = yes<enter>",
         "What timezone are you in = UTC<enter>",
         "Location of sets = cd<enter>",
-        "Set name(s) = -game*.tgz -x*.tgz<enter>",
+        "Set name(s) = -game*.tgz -xfont*.tgz -xserv*.tgz<enter>",
         "Directory does not contain SHA256.sig. Continue without verification = yes<enter>",
         "EOF<enter>",
         "install -af install.conf && reboot<enter>"

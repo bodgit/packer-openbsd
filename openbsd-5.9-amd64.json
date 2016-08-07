@@ -5,7 +5,9 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "mirror": "http://ftp.openbsd.org",
-    "vagrant_ansible": "no"
+    "vagrant_ansible": "no",
+    "atlas_box_name": "tmatilai/openbsd-5.9",
+    "atlas_box_version": "1.0.0"
   },
   "provisioners": [
     {
@@ -34,7 +36,7 @@
       "boot_command": [
         "S<enter>",
         "cat <<EOF >>install.conf<enter>",
-        "System hostname = openbsd58<enter>",
+        "System hostname = openbsd59<enter>",
         "Password for root = vagrant<enter>",
         "Setup a user = vagrant<enter>",
         "Password for user = vagrant<enter>",
@@ -49,11 +51,11 @@
       "boot_wait": "30s",
       "disk_size": 10140,
       "guest_additions_mode": "disable",
-      "guest_os_type": "OpenBSD",
-      "iso_checksum": "5412bb5ecbf4593e1319170a66ec7d02254394496a385883501e16540a638972",
+      "guest_os_type": "OpenBSD_64",
+      "iso_checksum": "685262fc665425c61a2952b2820389a2d331ac5558217080e6d564d2ce88eecb",
       "iso_checksum_type": "sha256",
-      "iso_url": "{{user `mirror`}}/pub/OpenBSD/5.8/i386/install58.iso",
-      "output_directory": "packer-openbsd-5.8-i386-virtualbox",
+      "iso_url": "{{user `mirror`}}/pub/OpenBSD/5.9/amd64/install59.iso",
+      "output_directory": "packer-openbsd-5.9-amd64-virtualbox",
       "shutdown_command": "/sbin/halt -p",
       "ssh_username": "root",
       "ssh_password": "vagrant",
@@ -64,14 +66,14 @@
         [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
       ],
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "openbsd-5.8-i386"
+      "vm_name": "openbsd-5.9-amd64"
     },
     {
       "type": "vmware-iso",
       "boot_command": [
         "S<enter>",
         "cat <<EOF >>install.conf<enter>",
-        "System hostname = openbsd58<enter>",
+        "System hostname = openbsd59<enter>",
         "Password for root = vagrant<enter>",
         "Setup a user = vagrant<enter>",
         "Password for user = vagrant<enter>",
@@ -85,17 +87,17 @@
       ],
       "boot_wait": "30s",
       "disk_size": 10140,
-      "guest_os_type": "other",
-      "iso_checksum": "5412bb5ecbf4593e1319170a66ec7d02254394496a385883501e16540a638972",
+      "guest_os_type": "other-64",
+      "iso_checksum": "685262fc665425c61a2952b2820389a2d331ac5558217080e6d564d2ce88eecb",
       "iso_checksum_type": "sha256",
-      "iso_url": "{{user `mirror`}}/pub/OpenBSD/5.8/i386/install58.iso",
-      "output_directory": "packer-openbsd-5.8-i386-vmware",
+      "iso_url": "{{user `mirror`}}/pub/OpenBSD/5.9/amd64/install59.iso",
+      "output_directory": "packer-openbsd-5.9-amd64-vmware",
       "ssh_username": "root",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
       "shutdown_command": "/sbin/halt -p",
-      "vm_name": "openbsd-5.8-i386",
+      "vm_name": "openbsd-5.9-amd64",
       "vmx_data": {
         "memsize": "384",
         "numvcpus": "1",
@@ -107,7 +109,7 @@
       "boot_command": [
         "S<enter>",
         "cat <<EOF >>install.conf<enter>",
-        "System hostname = openbsd58<enter>",
+        "System hostname = openbsd59<enter>",
         "Password for root = vagrant<enter>",
         "Setup a user = vagrant<enter>",
         "Password for user = vagrant<enter>",
@@ -121,16 +123,16 @@
       ],
       "boot_wait": "30s",
       "disk_size": 10140,
-      "iso_checksum": "5412bb5ecbf4593e1319170a66ec7d02254394496a385883501e16540a638972",
+      "iso_checksum": "685262fc665425c61a2952b2820389a2d331ac5558217080e6d564d2ce88eecb",
       "iso_checksum_type": "sha256",
-      "iso_url": "{{user `mirror`}}/pub/OpenBSD/5.8/i386/install58.iso",
-      "output_directory": "packer-openbsd-5.8-i386-qemu",
+      "iso_url": "{{user `mirror`}}/pub/OpenBSD/5.9/amd64/install59.iso",
+      "output_directory": "packer-openbsd-5.9-amd64-qemu",
       "ssh_username": "root",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
       "shutdown_command": "/sbin/halt -p",
-      "vm_name": "openbsd-5.8-i386",
+      "vm_name": "openbsd-5.9-amd64",
       "qemuargs": [
         [ "-m", "384M" ],
         [ "-smp", "cores=1,threads=1,sockets=1" ]
@@ -138,10 +140,14 @@
     }
   ],
   "post-processors": [
-    {
+    [{
       "type": "vagrant",
-      "output": "openbsd-5.8-i386-{{.Provider}}.box",
+      "output": "openbsd-5.9-amd64-{{.Provider}}.box",
       "vagrantfile_template": "vagrantfiles/openbsd"
-    }
-  ]
+    }]
+  ],
+  "push": {
+    "name": "",
+    "vcs": true
+  }
 }
